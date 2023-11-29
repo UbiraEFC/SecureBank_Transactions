@@ -1,0 +1,45 @@
+{
+  "name": "secure-bank",
+  "version": "1.0.0",
+  "description": "Backend for SecureBank Transactions Application",
+  "main": "index.js",
+  "author": {
+    "name": "Ubiratã Emiliano Fonseca Costa",
+    "email": "ubirata.efc@gmail.com"
+  },
+  "license": "ISC",
+  "keywords": [
+    "security",
+    "bank",
+    "securebank",
+    "transactions"
+  ],
+  "engines": {
+    "node": ">=16.19.1",
+    "yarn": ">=1.22.19"
+  },
+  "scripts": {
+    "build": "tsup src",
+    "start": "tsx src/server.ts",
+    "start:dev": "tsx watch src/server.ts"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "13.2.1",
+    "@commitlint/config-conventional": "13.2.0",
+    "@types/node": "^20.10.0",
+    "@typescript-eslint/eslint-plugin": "5.59.7",
+    "@typescript-eslint/parser": "5.59.7",
+    "eslint": "8.41.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-import-resolver-typescript": "3.5.5",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-import-helpers": "1.2.1",
+    "eslint-plugin-prettier": "4.0.0",
+    "husky": "4.3.8",
+    "prettier": "2.8.8",
+    "tsup": "6.7.0",
+    "tsx": "3.12.7",
+    "typescript": "^5.3.2"
+  }
+}
