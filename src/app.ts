@@ -13,10 +13,21 @@ import { v4 } from 'uuid';
 import { loadConfiguration } from './config/load-configuration';
 import { containerBind } from './container';
 import errorHandler from './controllers/middlewares/errorHandler';
+import { typeormDataSource } from './db/typeorm/data-source';
 import LoggerManager from './utils/logger-manager';
+import { logError, logInit } from './utils/logs';
 
 export async function createAppInstance(): Promise<Application> {
   await loadConfiguration();
+
+  await typeormDataSource
+    .initialize()
+    .then(() => {
+      logInit('Database initialized');
+    })
+    .catch((err) => {
+      logError('Database initialization failed', err);
+    });
 
   const container = new Container();
   containerBind(container);

@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  postgres:
+    container_name: postgres-securebank
+    image: postgres:13.4
+    restart: always
+    environment:
+      POSTGRES_USER: '${DATABASE_USER}'
+      POSTGRES_PASSWORD: '${DATABASE_PASSWORD}'
+    command: bash -c "echo \"create database ${DATABASE_NAME};\" >> /docker-entrypoint-initdb.d/init.sql && docker-entrypoint.sh postgres"
+
+    ports:
+      - '5432:5432'
+    networks:
+      - backend
+
+volumes:
+  pgdata:
+
+networks:
+  backend:
+    name: backend
+    driver: bridge
