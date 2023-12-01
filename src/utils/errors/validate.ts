@@ -12,3 +12,12 @@ export class ValidateError extends CustomError {
     this.message = message;
   }
 }
+
+export const ValidationErrorCodes = {
+  // USER
+  INVALID_NAME_LENGTH: 'invalid-name-length',
+  INVALID_NAME_FORMAT: 'invalid-name-format',
+  INVALID_EMAIL_FORMAT: 'invalid-email-format',
+  INVALID_DOCUMENT_FORMAT: 'invalid-document-format',
+  INVALID_USER_TYPE_FORMAT: 'invalid-userType-format',
+};
