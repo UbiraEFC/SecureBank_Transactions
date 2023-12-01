@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "pretty": false,
+    "sourceMap": true,
+    "target": "ES2021",
+    "outDir": "./dist",
+    "rootDirs": ["./src"],
+    "lib": ["es6", "dom"],
+    "types": ["node", "reflect-metadata"],
+    "baseUrl": "./src",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@src": ["."],
+      "@src/*": ["./*"],
+
+      "@utils": ["./utils"],
+      "@utils/*": ["./utils/*"],
+
+      "@controllers": ["./controllers"],
+      "@controllers/*": ["./controllers/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "test/**/*.ts"],
+  "exclude": ["node_modules", "coverage"]
+}
