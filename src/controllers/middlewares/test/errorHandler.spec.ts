@@ -4,11 +4,11 @@ import httpStatus from 'http-status';
 import { createRequest, createResponse } from 'node-mocks-http';
 import { beforeEach, describe, expect, it } from 'vitest';
 
-import { ISession } from '@src/models/DTOs/session';
-import BusinessError, { BusinessErrorCodes } from '@src/utils/errors/business';
-import ForbiddenError from '@src/utils/errors/forbidden';
-import UnauthorizedError from '@src/utils/errors/unauthorized';
-import { ValidateError } from '@src/utils/errors/validate';
+import { ISession } from '@src/models/DTOs/session/ISession';
+import BusinessError, { BusinessErrorCodes } from '@src/shared/errors/business';
+import ForbiddenError from '@src/shared/errors/forbidden';
+import UnauthorizedError from '@src/shared/errors/unauthorized';
+import { ValidateError } from '@src/shared/errors/validate';
 
 import errorHandler from '../errorHandler';
 

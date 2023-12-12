@@ -18,6 +18,6 @@ export default class UserEntity extends Base {
   @Column({ type: 'varchar' })
   public userType?: UserType;
 
-  // SHADOW PROPERTIES
+  @Column({ type: 'varchar' })
   public password?: string;
 }

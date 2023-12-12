@@ -3,7 +3,7 @@ import '@controllers';
 import bodyParser from 'body-parser';
 import compress from 'compression';
 import cors from 'cors';
-import { Application, NextFunction, Request, Response } from 'express';
+import express, { Application, NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
 import httpStatus from 'http-status';
 import { Container } from 'inversify';
@@ -11,9 +11,10 @@ import { InversifyExpressServer } from 'inversify-express-utils';
 import { v4 } from 'uuid';
 
 import { loadConfiguration } from './config/load-configuration';
+import upload from './config/upload/upload';
 import { containerBind } from './container';
 import errorHandler from './controllers/middlewares/errorHandler';
-import { typeormDataSource } from './db/typeorm/data-source';
+import { typeormDataSource } from './shared/db/typeorm/data-source';
 import LoggerManager from './utils/logger-manager';
 import { logError, logInit } from './utils/logs';
 
@@ -47,6 +48,7 @@ export async function createAppInstance(): Promise<Application> {
       req.headers['X-Request-ID'] = v4();
       next();
     });
+    app.use('/users/qrcode', express.static(`${upload.tmpFolder}/qrcode`));
   });
 
   server.setErrorConfig((app: Application): void => {

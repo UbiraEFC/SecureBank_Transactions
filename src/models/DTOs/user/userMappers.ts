@@ -1,4 +1,4 @@
-import UserEntity from '@src/db/entities/user';
+import { UserEntity } from '@src/shared/db/entities';
 
 import { IGetUserDTO } from './IUserDTOs';
 

@@ -1,7 +1,7 @@
 import { ParamSchema, Schema } from 'express-validator';
 
+import { ValidationErrorCodes } from '@src/shared/errors/validate';
 import { isValidCPF } from '@src/utils/document-validator';
-import { ValidationErrorCodes } from '@src/utils/errors/validate';
 import { validEmailRegex, validUserNameRegex } from '@src/utils/regex';
 
 import { UserType, UserTypeArray } from '../enumerators/UsersEnum';

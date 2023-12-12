@@ -3,12 +3,12 @@ import { Request, Response } from 'express';
 import httpStatus from 'http-status';
 
 import ConstantsEnv from '@src/config/env/constants';
+import BusinessError from '@src/shared/errors/business';
+import ForbiddenError from '@src/shared/errors/forbidden';
+import IntegrationError from '@src/shared/errors/integration';
+import UnauthorizedError from '@src/shared/errors/unauthorized';
+import { ValidateError } from '@src/shared/errors/validate';
 
-import BusinessError from '@utils/errors/business';
-import ForbiddenError from '@utils/errors/forbidden';
-import IntegrationError from '@utils/errors/integration';
-import UnauthorizedError from '@utils/errors/unauthorized';
-import { ValidateError } from '@utils/errors/validate';
 import LoggerManager from '@utils/logger-manager';
 import { logError } from '@utils/logs';
 

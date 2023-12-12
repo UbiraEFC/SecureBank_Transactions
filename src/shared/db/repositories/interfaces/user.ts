@@ -1,4 +1,4 @@
-import UserEntity from '@src/db/entities/user';
+import { UserEntity } from '../../entities';
 
 export interface IUserRepository {
   createOrUpdate(user: UserEntity): Promise<UserEntity>;

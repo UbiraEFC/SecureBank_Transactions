@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { validationResult } from 'express-validator';
 
-import { ValidateError } from '@src/utils/errors/validate';
+import { ValidateError } from '@src/shared/errors/validate';
 
 import errorHandler from './errorHandler';
 

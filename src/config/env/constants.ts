@@ -6,6 +6,13 @@ const ContantsEnv: IConstants = {
   env: env.NODE_ENV,
   port: env.API_PORT,
   appName: env.APP_NAME,
+  apiUrl: env.API_URL,
+  hashSaltRounds: Number(env.HASH_SALT_ROUNDS),
+  tokenExpirationInMinutes: Number(env.AUTHENTICATION_TOKEN_EXPIRATION_IN_MINUTES),
+  refreshTokenExpirationInHours: Number(env.REFRESH_TOKEN_EXPIRATION_IN_HOURS),
+  refreshTokenExpirationInDays: Number(env.REFRESH_TOKEN_EXPIRATION_IN_DAYS),
+  jwtSecretToken: env.JWT_SECRET_TOKEN,
+  jwtSecretRefreshToken: env.JWT_SECRET_REFRESH_TOKEN,
   debug: env.DEBUG,
   database: {
     host: env.DATABASE_HOST,
