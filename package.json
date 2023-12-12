@@ -30,6 +30,7 @@
     "migration:create": "typeorm-ts-node-commonjs migration:create ./src/db/typeorm/migrations/$npm_config_name",
     "setup:local:up": "docker-compose -f docker-compose.yaml up -d",
     "setup:local:down": "docker-compose -f docker-compose.yaml down",
+    "setup:keycloak": "NODE_ENV=keycloak-setup tsx src/providers/identity/keycloak-setup/index.ts",
     "style": "prettier . --check src/**/*.ts --cache",
     "style:fix": "prettier . --write src/**/*.ts --cache",
     "lint": "eslint . --ext .js,.ts --cache",

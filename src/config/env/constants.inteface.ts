@@ -1,3 +1,5 @@
+import { IIdentityProviderConfig } from '@src/providers/identity/interface/identity-config.interface';
+
 export interface IConstants {
   env: string;
   port: string;
@@ -15,4 +17,7 @@ export interface IConstants {
       idle: number;
     };
   };
+
+  // Providers
+  identityProvider: IIdentityProviderConfig;
 }

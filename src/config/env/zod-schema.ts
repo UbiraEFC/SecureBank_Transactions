@@ -14,6 +14,12 @@ export const envSchema = z.object({
   DATABASE_POOL_MAX: z.string().default('40'),
   DATABASE_ACQUIRE: z.string().default('5000'),
   DATABASE_IDLE: z.string().default('30000'),
+
+  KEYCLOAK_REALM: z.string().optional(),
+  KEYCLOAK_URL: z.string().optional(),
+  KEYCLOAK_CLIENT_ID: z.string().optional(),
+  KEYCLOAK_CLIENT_SECRET: z.string().optional(),
+  KEYCLOAK_JWT_PUBLIC_KEY: z.string().optional(),
 });
 
 export type envSchemaType = typeof envSchema._output;
