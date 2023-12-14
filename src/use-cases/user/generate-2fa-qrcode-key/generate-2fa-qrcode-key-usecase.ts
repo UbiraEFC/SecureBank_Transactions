@@ -12,10 +12,14 @@ import { IStorageProvider } from '@src/shared/providers/storage/interfaces/stora
 import { deleteFile, fileExists } from '@src/utils/file';
 import TYPES from '@src/utils/types';
 
-import { IGenerate2FAKeyRequest, IGenerate2FAKeyResponse, IGenerate2FAKeyUseCase } from './generate-2fa-key.interface';
+import {
+  IGenerate2FAQrCodeKeyRequest,
+  IGenerate2FAQrCodeKeyResponse,
+  IGenerate2FAQrCodeKeyUseCase,
+} from './generate-2fa-qrcode-key.interface';
 
 @injectable()
-export class Generate2FAKeyUseCase implements IGenerate2FAKeyUseCase {
+export class Generate2FAQrCodeKeyUseCase implements IGenerate2FAQrCodeKeyUseCase {
   constructor(
     @inject(TYPES.UserRepository) private readonly userRepository: IUserRepository,
     @inject(TYPES.UserSecondFactorKeyRepository)
@@ -24,7 +28,7 @@ export class Generate2FAKeyUseCase implements IGenerate2FAKeyUseCase {
     @inject(TYPES.OneTimePasswordProvider) private readonly oneTimePasswordProvider: IOneTimePasswordProvider,
   ) {}
 
-  async execute({ userId }: IGenerate2FAKeyRequest): Promise<IGenerate2FAKeyResponse> {
+  async execute({ userId }: IGenerate2FAQrCodeKeyRequest): Promise<IGenerate2FAQrCodeKeyResponse> {
     const user = await this.userRepository.findById(userId);
 
     if (!user) throw new BusinessError(BusinessErrorCodes.USER_NOT_FOUND);

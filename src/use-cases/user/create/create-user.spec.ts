@@ -3,19 +3,19 @@ import { mock } from 'vitest-mock-extended';
 
 import { UserType } from '@src/models/enumerators/UsersEnum';
 import { IUserRepository } from '@src/shared/db/repositories/interfaces/user';
-import { IGenerate2FAKeyUseCase } from '@src/use-cases/user/generate-2fa-key/generate-2fa-key.interface';
 
+import { IGenerate2FAQrCodeKeyUseCase } from '../generate-2fa-qrcode-key/generate-2fa-qrcode-key.interface';
 import { CreateUserUseCase } from './create-user-usecase';
 import { ICreateUserUseCase } from './create-user.interface';
 
 const userRepositoryMock = mock<IUserRepository>();
-const generate2FAKeyUseCaseMock = mock<IGenerate2FAKeyUseCase>();
+const Generate2FAQrCodeKeyUseCaseMock = mock<IGenerate2FAQrCodeKeyUseCase>();
 
 let createUserUseCase: ICreateUserUseCase;
 
 describe('Create User UseCase', () => {
   beforeEach(() => {
-    createUserUseCase = new CreateUserUseCase(userRepositoryMock, generate2FAKeyUseCaseMock);
+    createUserUseCase = new CreateUserUseCase(userRepositoryMock, Generate2FAQrCodeKeyUseCaseMock);
   });
 
   it('Should create a new user', async () => {

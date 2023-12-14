@@ -18,10 +18,10 @@ import { ValidateCredentialsUseCase } from '@src/use-cases/session/validate-cred
 import { IValidateCredentialsUseCase } from '@src/use-cases/session/validate-credentials/validate-credentials.interface';
 import { CreateUserUseCase } from '@src/use-cases/user/create/create-user-usecase';
 import { ICreateUserUseCase } from '@src/use-cases/user/create/create-user.interface';
-import { Generate2FAKeyUseCase } from '@src/use-cases/user/generate-2fa-key/generate-2fa-key-usecase';
-import { IGenerate2FAKeyUseCase } from '@src/use-cases/user/generate-2fa-key/generate-2fa-key.interface';
-import { Validate2FAKeyUseCase } from '@src/use-cases/user/validate-2fa-key/validate-2fa-key-usecase';
-import { IValidate2FAKeyUseCase } from '@src/use-cases/user/validate-2fa-key/validate-2fa-key.interface';
+import { Generate2FAQrCodeKeyUseCase } from '@src/use-cases/user/generate-2fa-qrcode-key/generate-2fa-qrcode-key-usecase';
+import { IGenerate2FAQrCodeKeyUseCase } from '@src/use-cases/user/generate-2fa-qrcode-key/generate-2fa-qrcode-key.interface';
+import { Validate2FAQrCodeKeyUseCase } from '@src/use-cases/user/validate-2fa-qrcode-key/validate-2fa-qrcode-key-usecase';
+import { IValidate2FAQrCodeKeyUseCase } from '@src/use-cases/user/validate-2fa-qrcode-key/validate-2fa-qrcode-key.interface';
 import { logError, logInit } from '@src/utils/logs';
 import TYPES from '@src/utils/types';
 
@@ -40,8 +40,8 @@ export const containerBind = (container: Container): void => {
     // Use Cases
     container.bind<ILivenessProbeUseCase>(TYPES.LivenessProbeUseCase).to(LivenessProbeUseCase);
     container.bind<ICreateUserUseCase>(TYPES.CreateUserUseCase).to(CreateUserUseCase);
-    container.bind<IGenerate2FAKeyUseCase>(TYPES.Generate2FAKeyUseCase).to(Generate2FAKeyUseCase);
-    container.bind<IValidate2FAKeyUseCase>(TYPES.Validate2FAKeyUseCase).to(Validate2FAKeyUseCase);
+    container.bind<IGenerate2FAQrCodeKeyUseCase>(TYPES.Generate2FAQrCodeKeyUseCase).to(Generate2FAQrCodeKeyUseCase);
+    container.bind<IValidate2FAQrCodeKeyUseCase>(TYPES.Validate2FAQrCodeKeyUseCase).to(Validate2FAQrCodeKeyUseCase);
     container.bind<IValidateCredentialsUseCase>(TYPES.ValidateCredentialsUseCase).to(ValidateCredentialsUseCase);
     container.bind<IValidate2FAUseCase>(TYPES.Validate2FAUseCase).to(Validate2FAUseCase);
     container.bind<IRefreshTokenUseCase>(TYPES.RefreshTokenUseCase).to(RefreshTokenUseCase);

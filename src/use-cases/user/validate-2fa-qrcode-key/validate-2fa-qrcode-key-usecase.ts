@@ -6,20 +6,23 @@ import { IOneTimePasswordProvider } from '@src/shared/providers/otp/interfaces/o
 import TYPES from '@src/utils/types';
 
 import {
-  IValidate2FAKeyUseCase,
-  IValidate2FAKeyUseCaseRequest,
-  IValidate2FAKeyUseCaseResponse,
-} from './validate-2fa-key.interface';
+  IValidate2FAQrCodeKeyUseCase,
+  IValidate2FAQrCodeKeyUseCaseRequest,
+  IValidate2FAQrCodeKeyUseCaseResponse,
+} from './validate-2fa-qrcode-key.interface';
 
 @injectable()
-export class Validate2FAKeyUseCase implements IValidate2FAKeyUseCase {
+export class Validate2FAQrCodeKeyUseCase implements IValidate2FAQrCodeKeyUseCase {
   constructor(
     @inject(TYPES.UserSecondFactorKeyRepository)
     private readonly userSecondFactorKeyRepository: IUserSecondFactorKeyRepository,
     @inject(TYPES.OneTimePasswordProvider) private readonly oneTimePasswordProvider: IOneTimePasswordProvider,
   ) {}
 
-  async execute({ userId, totpCode }: IValidate2FAKeyUseCaseRequest): Promise<IValidate2FAKeyUseCaseResponse> {
+  async execute({
+    userId,
+    totpCode,
+  }: IValidate2FAQrCodeKeyUseCaseRequest): Promise<IValidate2FAQrCodeKeyUseCaseResponse> {
     const userSecondFactorKey = await this.userSecondFactorKeyRepository.findByUserId(userId, false);
 
     if (!userSecondFactorKey) throw new BusinessError(BusinessErrorCodes.USER_SECOND_FACTOR_KEY_NOT_FOUND);

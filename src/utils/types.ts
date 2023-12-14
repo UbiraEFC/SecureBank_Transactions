@@ -13,8 +13,8 @@ const TYPES = {
   UserTokenRepository: 'UserTokenRepository',
 
   // 2FA
-  Generate2FAKeyUseCase: 'Generate2FAKeyUseCase',
-  Validate2FAKeyUseCase: 'Validate2FAKeyUseCase',
+  Generate2FAQrCodeKeyUseCase: 'Generate2FAQrCodeKeyUseCase',
+  Validate2FAQrCodeKeyUseCase: 'Validate2FAQrCodeKeyUseCase',
 
   // Session
   ValidateCredentialsUseCase: 'ValidateCredentialsUseCase',

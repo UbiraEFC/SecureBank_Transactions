@@ -1,6 +1,7 @@
 import { IGetUserDTO } from '@src/models/DTOs/user/IUserDTOs';
 import { UserType } from '@src/models/enumerators/UsersEnum';
-import { IGenerate2FAKeyResponse } from '@src/use-cases/user/generate-2fa-key/generate-2fa-key.interface';
+
+import { IGenerate2FAQrCodeKeyResponse } from '../generate-2fa-qrcode-key/generate-2fa-qrcode-key.interface';
 
 export interface ICreateUserRequest {
   name: string;
@@ -12,7 +13,7 @@ export interface ICreateUserRequest {
 
 export interface ICreateUserResponse {
   user: IGetUserDTO;
-  totpQrcode: IGenerate2FAKeyResponse;
+  totpQrcode: IGenerate2FAQrCodeKeyResponse;
 }
 
 export interface ICreateUserUseCase {
