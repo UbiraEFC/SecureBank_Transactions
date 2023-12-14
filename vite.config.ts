@@ -1,8 +1,8 @@
-import { defineConfig } from 'vitest/config';
+import { UserConfig, defineConfig } from 'vitest/config';
 import tsConfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
-  plugins: [tsConfigPaths()],
+  plugins: [tsConfigPaths() as unknown as UserConfig['plugins']],
   test: {
     testTimeout: 15000,
     setupFiles: ['test/index.ts'],
