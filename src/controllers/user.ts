@@ -31,14 +31,14 @@ export class UserController extends BaseHttpController implements interfaces.Con
     return res.status(httpStatus.CREATED).json(response);
   }
 
-  @httpPost('/generate2fa')
+  @httpPost('/generate2fa-key')
   public async generate2fa(req: Request, res: Response): Promise<Response> {
     const response = await this.Generate2FAQrCodeKeyUseCase.execute({ ...req.body });
 
     return res.status(httpStatus.OK).json(response);
   }
 
-  @httpPost('/validate2fa')
+  @httpPost('/validate2fa-key')
   public async validate2fa(req: Request, res: Response): Promise<Response> {
     const response = await this.Validate2FAQrCodeKeyUseCase.execute({ ...req.body });
 
