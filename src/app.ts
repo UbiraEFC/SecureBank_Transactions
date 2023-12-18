@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import '@controllers';
 
 import bodyParser from 'body-parser';
