@@ -2,6 +2,7 @@ import * as path from 'path';
 import { DataSource } from 'typeorm';
 
 import ConstantsEnv from '@src/config/env/constants';
+import * as entitiesClasses from '@src/shared/db/entities';
 import LoggerManager from '@src/utils/logger-manager';
 
 export const typeormDataSource = new DataSource({
@@ -14,8 +15,13 @@ export const typeormDataSource = new DataSource({
   database: ConstantsEnv.database.databaseName,
   port: ConstantsEnv.database.port,
 
-  migrations: [path.join(__dirname, 'migrations/*.{ts,js}')],
-  entities: [path.join(__dirname, '..', 'entities/*.{ts,js}')],
+  migrations:
+    process.env.NODE_ENV === 'test'
+      ? ['dist/shared/db/typeorm/migrations/*.js']
+      : [path.join(__dirname, 'migrations/*.{ts,js}')],
+
+  entities: process.env.NODE_ENV === 'test' ? entitiesClasses : [path.join(__dirname, '..', 'entities/*.{ts,js}')],
+
   logger: ConstantsEnv.debug ? LoggerManager.databaseLogger : undefined,
   migrationsRun: true,
   migrationsTransactionMode: 'each',

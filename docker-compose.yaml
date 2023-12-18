@@ -8,10 +8,30 @@ services:
     environment:
       POSTGRES_USER: '${DATABASE_USER}'
       POSTGRES_PASSWORD: '${DATABASE_PASSWORD}'
-    command: bash -c "echo \"create database ${DATABASE_NAME};\" >> /docker-entrypoint-initdb.d/init.sql && docker-entrypoint.sh postgres"
+      POSTGRES_DB: '${DATABASE_NAME}'
+    command: >
+      bash -c "echo \"create database ${DATABASE_NAME};\" > /docker-entrypoint-initdb.d/init.sql 
+      && docker-entrypoint.sh postgres"
 
     ports:
       - '5432:5432'
+    networks:
+      - backend
+
+  postgres-test:
+    container_name: postgres-securebank-test
+    image: postgres:13.4
+    restart: always
+    environment:
+      POSTGRES_USER: 'test_user'
+      POSTGRES_PASSWORD: 'test_password'
+      POSTGRES_DB: 'test_db'
+    command: >
+      bash -c "echo \"create database test_db;\" > /docker-entrypoint-initdb.d/init.sql 
+      && docker-entrypoint.sh postgres"
+
+    ports:
+      - '5433:5432'
     networks:
       - backend
 

@@ -27,6 +27,7 @@
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test": "vitest",
+    "test:e2e": "NODE_ENV=test vitest run --dir test/e2e",
     "migration:create": "typeorm-ts-node-commonjs migration:create ./src/shared/db/typeorm/migrations/$npm_config_name",
     "setup:local:up": "docker-compose -f docker-compose.yaml up -d",
     "setup:local:down": "docker-compose -f docker-compose.yaml down",

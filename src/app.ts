@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import '@controllers';
 
 import bodyParser from 'body-parser';
@@ -10,11 +11,12 @@ import { Container } from 'inversify';
 import { InversifyExpressServer } from 'inversify-express-utils';
 import { v4 } from 'uuid';
 
-import { loadConfiguration } from './config/load-configuration';
+import { loadConfiguration } from '@src/config/load-configuration';
+import { typeormDataSource } from '@src/shared/db/typeorm/data-source';
+
 import upload from './config/upload/upload';
 import { containerBind } from './container';
 import errorHandler from './controllers/middlewares/errorHandler';
-import { typeormDataSource } from './shared/db/typeorm/data-source';
 import LoggerManager from './utils/logger-manager';
 import { logError, logInit } from './utils/logs';
 
