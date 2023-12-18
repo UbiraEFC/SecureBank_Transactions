@@ -1,3 +1,5 @@
 dist
 dist/*.js
 tsup.config.ts
+vite.config.ts
+coverage

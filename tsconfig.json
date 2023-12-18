@@ -1,21 +1,6 @@
+/* tsconfig.json */
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "target": "ES2021",
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "sourceMap": true,
-    "lib": ["es6", "dom"],
-    "types": ["node"],
-    "typeRoots": ["./node_modules/@types"],
-    "resolveJsonModule": true,
-    "baseUrl": ".",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true
-  },
+  "extends": "./tsconfig-base.json",
   "include": ["src/**/*.ts", "test/**/*.ts"],
   "exclude": ["node_modules"]
 }

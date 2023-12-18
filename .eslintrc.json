@@ -12,6 +12,13 @@
     "tsconfigRootDir": "./"
   },
   "plugins": ["@typescript-eslint", "prettier", "eslint-plugin-import-helpers", "import"],
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "project": ["./tsconfig.json"]
+      }
+    }
+  },
   "rules": {
     "no-useless-constructor": "off",
     "import/no-extraneous-dependencies": [
@@ -55,7 +62,7 @@
       "warn",
       {
         "newlinesBetween": "always",
-        "groups": ["module"],
+        "groups": ["module", "/^@src/", "/^@utils/", "/^@controllers/"],
         "alphabetize": {
           "order": "asc",
           "ignoreCase": true
