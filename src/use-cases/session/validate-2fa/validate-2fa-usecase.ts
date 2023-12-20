@@ -44,19 +44,25 @@ export class Validate2FAUseCase implements IValidate2FAUseCase {
 
     if (!user) throw new BusinessError(BusinessErrorCodes.USER_NOT_FOUND);
 
-    const acessToken = sign({}, ConstantsEnv.jwtSecretToken, {
-      subject: user.id,
-      expiresIn: ConstantsEnv.tokenExpirationInMinutes,
-    });
+    const acessToken = sign(
+      {
+        userType: user.userType,
+      },
+      ConstantsEnv.jwtSecretToken,
+      {
+        subject: user.id,
+        expiresIn: `${ConstantsEnv.tokenExpirationInMinutes}m`,
+      },
+    );
 
     const refreshToken = sign(
       {
-        email: user.email,
+        userType: user.userType,
       },
       ConstantsEnv.jwtSecretRefreshToken,
       {
         subject: user.id,
-        expiresIn: '8h',
+        expiresIn: ConstantsEnv.refreshTokenExpirationInHours,
       },
     );
 
@@ -67,7 +73,9 @@ export class Validate2FAUseCase implements IValidate2FAUseCase {
       userId: user.id,
       tokenType: TokenType.REFRESH_TOKEN,
       token: refreshToken,
-      expiresAt: DateTime.now().plus({ days: ConstantsEnv.refreshTokenExpirationInDays }).toJSDate(),
+      expiresAt: DateTime.now()
+        .plus({ days: Number(ConstantsEnv.refreshTokenExpirationInDays.split('')[0]) })
+        .toJSDate(),
     });
 
     return {

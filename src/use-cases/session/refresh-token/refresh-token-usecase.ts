@@ -61,7 +61,9 @@ export class RefreshTokenUseCase implements IRefreshTokenUseCase {
       userId,
       tokenType: TokenType.REFRESH_TOKEN,
       token: newRefreshToken,
-      expiresAt: DateTime.now().plus({ days: ConstantsEnv.refreshTokenExpirationInDays }).toJSDate(),
+      expiresAt: DateTime.now()
+        .plus({ days: Number(ConstantsEnv.refreshTokenExpirationInDays.split('')[0]) })
+        .toJSDate(),
     });
 
     return { acessToken: token, refreshToken: newRefreshToken };
