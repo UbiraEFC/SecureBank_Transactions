@@ -5,6 +5,8 @@ export const mockEnvs = (): envSchemaType => {
     NODE_ENV: 'test',
     API_PORT: '3025',
     API_URL: 'http://localhost:3025',
+    ADMIN_EMAIL: 'admin@email',
+    ADMIN_PASSWORD: 'admin',
     HASH_SALT_ROUNDS: '1',
     AUTHENTICATION_TOKEN_EXPIRATION_IN_MINUTES: '2',
     REFRESH_TOKEN_EXPIRATION_IN_HOURS: '8',
