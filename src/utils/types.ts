@@ -9,8 +9,19 @@ const TYPES = {
   // User
   UserRepository: 'UserRepository',
   CreateUserUseCase: 'CreateUserUseCase',
+  GetMeUseCase: 'GetMeUseCase',
+  GetAllUsersUseCase: 'GetAllUsersUseCase',
   UserSecondFactorKeyRepository: 'UserSecondFactorKeyRepository',
   UserTokenRepository: 'UserTokenRepository',
+
+  // Account
+  AccountRepository: 'AccountRepository',
+
+  // Transaction
+  TransactionRepository: 'TransactionRepository',
+  DepositUseCase: 'DepositUseCase',
+  TransferUseCase: 'TransferUseCase',
+  WithdrawUseCase: 'WithdrawUseCase',
 
   // 2FA
   Generate2FAQrCodeKeyUseCase: 'Generate2FAQrCodeKeyUseCase',

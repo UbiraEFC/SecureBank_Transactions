@@ -32,4 +32,10 @@ export const BusinessErrorCodes = {
   QRCODE_NOT_FOUND: 'qrcode_not_found',
   USER_SECOND_FACTOR_KEY_NOT_FOUND: 'user_second_factor_key_not_found',
   INVALID_TOTP_CODE: 'invalid_totp_code',
+
+  // TRANSACTION
+  INSUFFICIENT_BALANCE: 'insufficient_balance',
+  ACCOUNT_NOT_FOUND: 'account_not_found',
+  DESTINATION_ACCOUNT_NOT_FOUND: 'destination_account_not_found',
+  SOURCE_AND_DESTINATION_ACCOUNT_ARE_THE_SAME: 'source_and_destination_account_are_the_same',
 };
