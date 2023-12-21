@@ -1,5 +1,6 @@
 export interface IGenerate2FAQrCodeKeyRequest {
-  userId: string;
+  email: string;
+  password: string;
 }
 
 export interface IGenerate2FAQrCodeKeyResponse {

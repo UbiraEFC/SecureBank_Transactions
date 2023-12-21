@@ -4,7 +4,7 @@ import { ValidationErrorCodes } from '@src/shared/errors/validate';
 import { isValidCPF } from '@src/utils/document-validator';
 import { validEmailRegex, validUserNameRegex } from '@src/utils/regex';
 
-import { UserType, UserTypeArray } from '../enumerators/UsersEnum';
+import { UserType } from '../enumerators/UsersEnum';
 
 const nameRules: ParamSchema = {
   in: 'body',
@@ -56,7 +56,7 @@ const userType: ParamSchema = {
   isString: { bail: true },
   notEmpty: { bail: true },
   custom: {
-    options: (typePast: UserType) => UserTypeArray.includes(typePast),
+    options: (typePast: UserType) => [UserType.PF, UserType.PJ].includes(typePast),
   },
   errorMessage: ValidationErrorCodes.INVALID_USER_TYPE_FORMAT,
 };

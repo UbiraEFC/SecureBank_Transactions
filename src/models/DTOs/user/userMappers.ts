@@ -10,5 +10,7 @@ export function getUserMapper(user: UserEntity): IGetUserDTO {
     document: user.document,
     userType: user.userType,
     createdAt: user.createdAt,
+    accountNumber: user?.account?.accountNumber,
+    balance: user?.account?.balance,
   };
 }

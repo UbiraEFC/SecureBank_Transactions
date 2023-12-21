@@ -1,7 +1,11 @@
 import { Container } from 'inversify';
 
+import { AccountRepository } from '@src/shared/db/repositories/account';
+import { IAccountRepository } from '@src/shared/db/repositories/interfaces/account';
+import { ITransactionRepository } from '@src/shared/db/repositories/interfaces/transaction';
 import { IUserSecondFactorKeyRepository } from '@src/shared/db/repositories/interfaces/user-second-factor-key';
 import { IUserTokenRepository } from '@src/shared/db/repositories/interfaces/user-token';
+import { TransactionRepository } from '@src/shared/db/repositories/transaction';
 import { UserSecondFactorKeyRepository } from '@src/shared/db/repositories/user-second-factor-key';
 import { UserTokenRepository } from '@src/shared/db/repositories/user-token';
 import { OTPLibProvider } from '@src/shared/providers/otp/implementations/otplib/otplib.provider';
@@ -10,16 +14,28 @@ import { LocalStorageProvider } from '@src/shared/providers/storage/implementati
 import { IStorageProvider } from '@src/shared/providers/storage/interfaces/storage.interface';
 import { LivenessProbeUseCase } from '@src/use-cases/health/liveness-probe/liveness-probe-usecase';
 import { ILivenessProbeUseCase } from '@src/use-cases/health/liveness-probe/liveness-probe.interface';
+import { HandshakeUseCase } from '@src/use-cases/security/handshake/handshake-usecase';
+import { IHandshakeUseCase } from '@src/use-cases/security/handshake/handshake.interface';
 import { RefreshTokenUseCase } from '@src/use-cases/session/refresh-token/refresh-token-usecase';
 import { IRefreshTokenUseCase } from '@src/use-cases/session/refresh-token/refresh-token.interface';
 import { Validate2FAUseCase } from '@src/use-cases/session/validate-2fa/validate-2fa-usecase';
 import { IValidate2FAUseCase } from '@src/use-cases/session/validate-2fa/validate-2fa.interface';
 import { ValidateCredentialsUseCase } from '@src/use-cases/session/validate-credentials/validate-credentials-usecase';
 import { IValidateCredentialsUseCase } from '@src/use-cases/session/validate-credentials/validate-credentials.interface';
+import { DepositUseCase } from '@src/use-cases/transaction/deposit/deposit-usecase';
+import { IDepositUseCase } from '@src/use-cases/transaction/deposit/deposit.interface';
+import { TransferUseCase } from '@src/use-cases/transaction/transfer/transfer-usecase';
+import { ITransferUseCase } from '@src/use-cases/transaction/transfer/transfer.interface';
+import { WithdrawUseCase } from '@src/use-cases/transaction/withdraw/withdraw-usecase';
+import { IWithdrawUseCase } from '@src/use-cases/transaction/withdraw/withdraw.interface';
 import { CreateUserUseCase } from '@src/use-cases/user/create/create-user-usecase';
 import { ICreateUserUseCase } from '@src/use-cases/user/create/create-user.interface';
 import { Generate2FAQrCodeKeyUseCase } from '@src/use-cases/user/generate-2fa-qrcode-key/generate-2fa-qrcode-key-usecase';
 import { IGenerate2FAQrCodeKeyUseCase } from '@src/use-cases/user/generate-2fa-qrcode-key/generate-2fa-qrcode-key.interface';
+import { GetAllUsersUseCase } from '@src/use-cases/user/get-all/get-all-users-usecase';
+import { IGetAllUsersUseCase } from '@src/use-cases/user/get-all/get-all-users.interface';
+import { GetMeUseCase } from '@src/use-cases/user/get-me/get-me-usecase';
+import { IGetMeUseCase } from '@src/use-cases/user/get-me/get-me.interface';
 import { Validate2FAQrCodeKeyUseCase } from '@src/use-cases/user/validate-2fa-qrcode-key/validate-2fa-qrcode-key-usecase';
 import { IValidate2FAQrCodeKeyUseCase } from '@src/use-cases/user/validate-2fa-qrcode-key/validate-2fa-qrcode-key.interface';
 import { logError, logInit } from '@src/utils/logs';
@@ -33,6 +49,8 @@ export const containerBind = (container: Container): void => {
     // Repositories
     container.bind<IUserRepository>(TYPES.UserRepository).to(UserRepository);
     container.bind<IUserTokenRepository>(TYPES.UserTokenRepository).to(UserTokenRepository);
+    container.bind<IAccountRepository>(TYPES.AccountRepository).to(AccountRepository);
+    container.bind<ITransactionRepository>(TYPES.TransactionRepository).to(TransactionRepository);
     container
       .bind<IUserSecondFactorKeyRepository>(TYPES.UserSecondFactorKeyRepository)
       .to(UserSecondFactorKeyRepository);
@@ -45,6 +63,12 @@ export const containerBind = (container: Container): void => {
     container.bind<IValidateCredentialsUseCase>(TYPES.ValidateCredentialsUseCase).to(ValidateCredentialsUseCase);
     container.bind<IValidate2FAUseCase>(TYPES.Validate2FAUseCase).to(Validate2FAUseCase);
     container.bind<IRefreshTokenUseCase>(TYPES.RefreshTokenUseCase).to(RefreshTokenUseCase);
+    container.bind<IGetMeUseCase>(TYPES.GetMeUseCase).to(GetMeUseCase);
+    container.bind<IGetAllUsersUseCase>(TYPES.GetAllUsersUseCase).to(GetAllUsersUseCase);
+    container.bind<IDepositUseCase>(TYPES.DepositUseCase).to(DepositUseCase);
+    container.bind<ITransferUseCase>(TYPES.TransferUseCase).to(TransferUseCase);
+    container.bind<IWithdrawUseCase>(TYPES.WithdrawUseCase).to(WithdrawUseCase);
+    container.bind<IHandshakeUseCase>(TYPES.HandshakeUseCase).to(HandshakeUseCase);
 
     // Providers
     container.bind<IOneTimePasswordProvider>(TYPES.OneTimePasswordProvider).to(OTPLibProvider);

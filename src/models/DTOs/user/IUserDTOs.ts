@@ -7,4 +7,6 @@ export interface IGetUserDTO {
   document: string;
   userType: UserType;
   createdAt: Date;
+  accountNumber: number;
+  balance: number;
 }

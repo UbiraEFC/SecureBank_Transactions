@@ -2,10 +2,16 @@ export interface IConstants {
   env: string;
   port: string;
   apiUrl: string;
+  adminEmail: string;
+  adminPassword: string;
+  backendPublicKey: string;
+  frontendPublicKey: string;
+  backendPrivateKey: string;
+  frontendPrivateKey: string;
   hashSaltRounds: number;
   tokenExpirationInMinutes: number;
-  refreshTokenExpirationInHours: number;
-  refreshTokenExpirationInDays: number;
+  refreshTokenExpirationInHours: string;
+  refreshTokenExpirationInDays: string;
   jwtSecretToken: string;
   jwtSecretRefreshToken: string;
   appName: string;
