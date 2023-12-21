@@ -4,6 +4,10 @@ export interface IConstants {
   apiUrl: string;
   adminEmail: string;
   adminPassword: string;
+  backendPublicKey: string;
+  frontendPublicKey: string;
+  backendPrivateKey: string;
+  frontendPrivateKey: string;
   hashSaltRounds: number;
   tokenExpirationInMinutes: number;
   refreshTokenExpirationInHours: string;

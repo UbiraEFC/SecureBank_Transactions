@@ -16,7 +16,7 @@ export class DepositUseCase implements IDepositUseCase {
   constructor(@inject(TYPES.AccountRepository) private readonly accountRepository: IAccountRepository) {}
 
   async execute({ session, amount }: IDepositUseCaseRequest): Promise<ITransactionDTO> {
-    const account = await this.accountRepository.findByAccountId(session.userId);
+    const account = await this.accountRepository.findByUserId(session.userId);
 
     if (!account) throw new BusinessError(BusinessErrorCodes.ACCOUNT_NOT_FOUND);
 

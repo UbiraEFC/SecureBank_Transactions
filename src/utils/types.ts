@@ -31,6 +31,9 @@ const TYPES = {
   ValidateCredentialsUseCase: 'ValidateCredentialsUseCase',
   Validate2FAUseCase: 'Validate2FAUseCase',
   RefreshTokenUseCase: 'RefreshTokenUseCase',
+
+  // Security
+  HandshakeUseCase: 'HandshakeUseCase',
 };
 
 export default TYPES;

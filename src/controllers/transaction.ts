@@ -8,6 +8,8 @@ import { ITransferUseCase } from '@src/use-cases/transaction/transfer/transfer.i
 import { IWithdrawUseCase } from '@src/use-cases/transaction/withdraw/withdraw.interface';
 import TYPES from '@src/utils/types';
 
+import { decrypt } from './middlewares/decrypt';
+import { encrypt } from './middlewares/encrypt';
 import { ensureAuthenticated } from './middlewares/ensureAuthenticated';
 
 @controller('/transaction')
@@ -20,11 +22,13 @@ export class TransactionController extends BaseHttpController implements interfa
     super();
   }
 
-  @httpPost('/deposit', ensureAuthenticated)
+  @httpPost('/deposit', ensureAuthenticated, decrypt)
   public async deposit(req: Request, res: Response): Promise<Response> {
     const response = await this.depositUseCase.execute({ session: req.session, amount: req.body.amount as number });
 
-    return res.status(httpStatus.CREATED).json(response);
+    const encrypted = encrypt(JSON.stringify(response));
+
+    return res.status(httpStatus.CREATED).json({ encrypted });
   }
 
   @httpPost('/transfer', ensureAuthenticated)

@@ -14,6 +14,8 @@ import { LocalStorageProvider } from '@src/shared/providers/storage/implementati
 import { IStorageProvider } from '@src/shared/providers/storage/interfaces/storage.interface';
 import { LivenessProbeUseCase } from '@src/use-cases/health/liveness-probe/liveness-probe-usecase';
 import { ILivenessProbeUseCase } from '@src/use-cases/health/liveness-probe/liveness-probe.interface';
+import { HandshakeUseCase } from '@src/use-cases/security/handshake/handshake-usecase';
+import { IHandshakeUseCase } from '@src/use-cases/security/handshake/handshake.interface';
 import { RefreshTokenUseCase } from '@src/use-cases/session/refresh-token/refresh-token-usecase';
 import { IRefreshTokenUseCase } from '@src/use-cases/session/refresh-token/refresh-token.interface';
 import { Validate2FAUseCase } from '@src/use-cases/session/validate-2fa/validate-2fa-usecase';
@@ -66,6 +68,7 @@ export const containerBind = (container: Container): void => {
     container.bind<IDepositUseCase>(TYPES.DepositUseCase).to(DepositUseCase);
     container.bind<ITransferUseCase>(TYPES.TransferUseCase).to(TransferUseCase);
     container.bind<IWithdrawUseCase>(TYPES.WithdrawUseCase).to(WithdrawUseCase);
+    container.bind<IHandshakeUseCase>(TYPES.HandshakeUseCase).to(HandshakeUseCase);
 
     // Providers
     container.bind<IOneTimePasswordProvider>(TYPES.OneTimePasswordProvider).to(OTPLibProvider);

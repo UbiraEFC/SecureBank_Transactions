@@ -38,4 +38,8 @@ export const BusinessErrorCodes = {
   ACCOUNT_NOT_FOUND: 'account_not_found',
   DESTINATION_ACCOUNT_NOT_FOUND: 'destination_account_not_found',
   SOURCE_AND_DESTINATION_ACCOUNT_ARE_THE_SAME: 'source_and_destination_account_are_the_same',
+
+  // SECURITY
+  MISSING_KEY: 'missing_key',
+  MISSING_ENCRYPTED_DATA: 'missing_encrypted_data',
 };
